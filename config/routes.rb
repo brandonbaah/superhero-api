@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/' => 'superheroes#index'
+  
   namespace :api do
     namespace :v1 do
       get '/superheroes/:id' => 'superheroes#show'
