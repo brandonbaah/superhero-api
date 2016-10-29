@@ -1,22 +1,27 @@
-<h1>Superheroes</h1>
+<h1 align="center">League of SuperHeroes</h1>
 
 <div ng-app="app">
   <div ng-controller="superheroesCtrl">
     <h3>{{message}}</h3>
-    <input type="text" ng-model="superName" placeholder="Type superhero here">
-    <button type="text" name="button" ng-click="Uppercase">
-
+    <div align="center">
+      <input type="text" ng-model="superName" placeholder="Type to Search">
+      <button type="text" name="button" ng-click="Uppercase">
+    </div>
+    <div align="center">
       <input type="text" placeholder="Superhero Name" ng-model="superheroName">
       <input type="text" placeholder="Superpower" ng-model="superheroPower">
       <button type="button" ng-click="addSuperhero()">Add Superhero</button>
+    </div>
       <table style="width:100%">
       <tr>
-        <th ng-click="toggleOrder('superhero_name')">Superhero Name</th>
-        <th ng-click="toggleOrder('superhero_power')">Super Power</th>
+        <th button type="button" align="center" ng-click="toggleOrder('superhero_name')">Superhero Name Toggle</th>
+        <th button type="button" align="center" ng-click="toggleOrder('superhero_power')">Super Power Toggle</th>
       </tr>
       <tr ng-repeat="superhero in superheroes | filter: {superhero_name: superName} | orderBy:orderAttribute:isReverse">
-        <td>{{superhero.superhero_name}}</td>
-        <td>{{superhero.superhero_power}}</td><br/>
+        <a ng-href="/superheroes/{{superhero.id}}" color="black">
+          <td align="center">{{superhero.superhero_name}}</td>
+          <td align="center">{{superhero.superhero_power}}</td><br/>
+        </a>
       </tr>
     </table>
     </div>
