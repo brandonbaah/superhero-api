@@ -1,4 +1,4 @@
-class Api:V2::SuperheroesController < ApplicationController
+class Api::V2::SuperheroesController < ApplicationController
 
   def show
     @superhero = Superhero.find_by(id: params[:id])
