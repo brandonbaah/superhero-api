@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  angular.module("app").controller("superheroesCtrl", function($scope, $http) {
+  angular.module("app").controller("superheroesCtrl", ['$scope', '$http', function($scope, $http) {
     function setup() {
         $http.get('/api/v1/superheroes.json').then(function(response){
         console.log(response)
@@ -35,5 +35,5 @@
       }
         $scope.orderAttribute = orderAttribute;
     }
-  });
+  }]);
 })();
