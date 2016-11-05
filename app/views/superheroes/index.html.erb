@@ -1,24 +1,65 @@
-<h1 align="center">League of SuperHeroes</h1>
-
 <div ng-app="app">
   <div ng-controller="superheroesCtrl">
-    <h3>{{message}}</h3>
+
+<div class="jumbotron" style="background-color: indianred">
+  <body bgcolor="#E6E6FA">
+  <h1 align="center">League of Superheroes</h1>
+  <p align="center">User Ability to filter through list of battle ready Vigilantes all sworn to uphold justice in the Universe!</p>
+    <p align="center">Feel free add another Superhero to our elite list!</p>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="SuperHeroModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="SuperHeroModalLabel">Birth a New Hero</h4>
+          </div>
+          <div class="modal-body">
+            <div>
+              <label for="name" class="control-label">Superhero Name:</label>
+              <input type="text" class="form-control "placeholder="Please enter full name" ng-model="superhero.superhero_power">
+            </div>
+            <div>
+              <label for="address" class="control-label">Superpower:</label>
+              <input type="text" class="form-control "placeholder="Please enter superpower" ng-model="superhero.superhero_name">
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="addSuperhero()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
     <div align="center">
       <input type="text" ng-model="superName" placeholder="Type to Search">
-      <button type="text" name="button" ng-click="Uppercase">
+
     </div>
+    <br>
     <div align="center">
-      <input type="text" placeholder="Superhero Name" ng-model="superheroName">
-      <input type="text" placeholder="Superpower" ng-model="superheroPower">
+      <input type="text" class="form-check-input" placeholder="Superhero Name" ng-model="superheroName">
+      <input type="text" class="form-check-input" placeholder="Superpower" ng-model="superheroPower">
       <button type="button" ng-click="addSuperhero()">Add Superhero</button>
     </div>
       <table style="width:100%">
       <tr>
-        <th button type="button" align="center" ng-click="toggleOrder('superhero_name')">Superhero Name Toggle</th>
-        <th button type="button" align="center" ng-click="toggleOrder('superhero_power')">Super Power Toggle</th>
+        <th align="center">
+          <div align="center">
+            <button type="button" data-toggle="tooltip" data-placement="bottom" title="Toggle Alphabetical Order" data-original-title="Toggle Alphabetical Order" aria-describedby="tooltip637147" ng-click="toggleOrder('superhero_name')">Superhero Name Toggle</button>
+          </div>
+          <br>
+      </th>
+      <th align="center">
+          <div align="center">
+            <button type="button" data-toggle="tooltip" data-placement="bottom" title="Toggle Alphabetical Order" data-original-title="Toggle Alphabetical Order" aria-describedby="tooltip637147" align="center" ng-click="toggleOrder('superhero_power')">Super Power Toggle</button>
+          </div>
+          <br>
+      </th>
       </tr>
-      <tr ng-repeat="superhero in superheroes | filter: {superhero_name: superName} | orderBy:orderAttribute:isReverse">
-        <a ng-href="/superheroes/{{superhero.id}}" color="black">
+      <tr style="background-color: indianred" class="well" ng-repeat="superhero in superheroes | filter: {superhero_name: superName} | orderBy:orderAttribute:isReverse">
+        <a ng-href="/superheroes/{{superhero.id}}">
           <td align="center">{{superhero.superhero_name}}</td>
           <td align="center">{{superhero.superhero_power}}</td><br/>
         </a>

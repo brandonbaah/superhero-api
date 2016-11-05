@@ -14,7 +14,7 @@
       var superhero = {
         superhero_name: $scope.superheroName,
         superhero_power: $scope.superheroPower
-      }
+      };
       console.log(superhero)
       $http.post('/api/v1/superheroes.json', superhero).success(function(response) {
         // $scope.message = response.data.message;
